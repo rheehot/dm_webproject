@@ -5,7 +5,7 @@ import Login from './components/login';
 
 function App() {
   return (
-    <div style={{ background: 'url(./backImg.jpg) center/cover no-repeat', height: '100vh' }}>
+    <div style={{ background: 'url(./backImg.jpg) center/cover no-repeat', height: '100vh', opacity: 0.7}}>
       <Router>
         <Route exact path='/question'>
           <Question />

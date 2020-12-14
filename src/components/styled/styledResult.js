@@ -65,8 +65,3 @@ padding: 10px 0;
     margin: 5px 0;
 }
 `;
-
-export const A = styled.a`
-text-decoration: none;
-color: ${color__black}
-`;

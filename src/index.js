@@ -8,6 +8,11 @@ const GlobalStyle = createGlobalStyle`
 body {
   margin: 0;
 }
+
+a {
+  text-decoration: none;
+  color: black;
+}
 `;
 
 ReactDOM.render(
