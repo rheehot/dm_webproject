@@ -4,6 +4,11 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createGlobalStyle } from 'styled-components';
 
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import rootReducer from './redux';
+
 const GlobalStyle = createGlobalStyle`
 body {
   margin: 0;
@@ -15,10 +20,14 @@ a {
 }
 `;
 
+const store = createStore(rootReducer, composeWithDevTools());
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
-    <GlobalStyle />
+    <Provider store={store}>
+      <App />
+      <GlobalStyle />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
