@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import {
     color__white,
-    color__black,
     font__size__big,
     font__size__large,
     font__size__medium
