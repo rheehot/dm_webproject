@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Home, Title, Questions, ButtonGroup, Button } from './styled/styleQuestion';
 import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
+import Layout from '../Layout';
 
 const Question = () => {
     const [state, setState] = useState([]);
     const [count, setCount] = useState(0);
     let history = useHistory();
+
+    const loginState = useSelector(state => state.login.isLogin);
 
     const onClickBtn = (e) => {
         setCount(count + 1);
@@ -16,14 +21,11 @@ const Question = () => {
         history.push('/result');
     }
 
-    useEffect(() => {
-        console.log('!!!!!!!!!!!!!!!!!');
-        console.log(state);
-    }, [count > 4]);
-
     return (
+        loginState === true ?
         count < 5 ?
             <Home>
+                <Layout />
                 <Title>{dummy.data[count].title}</Title>
                 <Questions>{dummy.data[count].desc}</Questions>
                 <ButtonGroup>
@@ -34,7 +36,11 @@ const Question = () => {
             </Home>
             :
             <Home>
-                <Title>. . . 분 석 중</Title>
+                <Title>. . . 분석중</Title>
+            </Home>
+            :
+            <Home>
+                <Title>로그인이 필요한 서비스 입니다.</Title>
             </Home>
     );
 }

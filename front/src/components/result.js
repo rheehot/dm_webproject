@@ -1,9 +1,12 @@
 import React from 'react';
 import { Home, Ul, Li, Info, Container } from './styled/styledResult';
 
+import Layout from '../Layout';
+
 const Result = () => {
     return (
         <Home>
+            <Layout />
             <h1 style={{ marginTop: 30 }}>추천 개발자</h1>
             <Container>
             <Ul>

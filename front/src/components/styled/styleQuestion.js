@@ -8,6 +8,7 @@ import {
 
 export const Home = styled.div`
 height: 100vh;
+// margin-top: 200px;
 opacity: 0.8;
 color: ${color__white};
 text-align: center;
@@ -15,6 +16,7 @@ display: flex;
 justify-content: center;
 flex-direction: column;
 `;
+
 
 export const Title = styled.div`
 font-size: ${font__size__big};

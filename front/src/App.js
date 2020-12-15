@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Layout from './Layout';
 import Question from './components/question';
 import Result from './components/result';
 import Login from './components/login';

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loginAction } from '../redux/login';
 
 import { useHistory } from 'react-router-dom';
+import Layout from '../Layout';
 
 const Login = () => {
     const [login, setLogin] = useState({ id: null, pw: null });
@@ -24,6 +25,7 @@ const Login = () => {
 
     return (
         <Home>
+            <Layout />
             <Title>LOGIN</Title>
             <LoginForm>
                 <InputId placeholder="ID" onChange={onChangeId} />
