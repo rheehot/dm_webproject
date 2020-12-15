@@ -25,7 +25,6 @@ const Login = () => {
 
     return (
         <Home>
-            <Layout />
             <Title>LOGIN</Title>
             <LoginForm>
                 <InputId placeholder="ID" onChange={onChangeId} />

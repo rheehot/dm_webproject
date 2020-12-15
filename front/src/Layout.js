@@ -1,4 +1,4 @@
-import Reac from 'react';
+import React from 'react';
 import sytled from 'styled-components';
 
 import { useDispatch } from 'react-redux';
