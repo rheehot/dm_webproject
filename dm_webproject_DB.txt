@@ -1,0 +1,34 @@
+create database dm_webproject;
+use dm_webproject;
+
+-- 사용자 리스트 테이블
+create table user(
+	id varchar(100) not null,
+	pw varchar(100) not null,
+	primary key(id)
+);
+
+insert into user (id, pw) values ('jaepani', 'jaepani5015');
+
+-- 개발자 리스트 테이블
+create table developer (
+	dev_name varchar(50) not null,
+	frontend BOOLEAN not null,
+	backend BOOLEAN not null,
+	javascript BOOLEAN not null,
+	java BOOLEAN not null,
+	senior BOOLEAN not null,
+	link varchar(50) not null
+);
+
+insert into developer values('김재환', 1, 1, 1, 0, 0, "https://jaepani.github.io/portfolio/");
+insert into developer values('박정환', 1, 1, 1, 1, 0, "https://github.com/OriginalKimChi");
+insert into developer values('Captain Pangyo', 1, 1, 1, 1, 1, "https://github.com/joshua1988");
+insert into developer values('이동욱', 1, 1, 1, 1, 1, "https://jojoldu.github.io/");
+insert into developer values('Tony', 1, 1, 1, 1, 1, "https://github.com/tonyfromundefined");
+insert into developer values('조현영', 1, 1, 1, 1, 1, "https://www.zerocho.com/");
+
+
+
+
+
