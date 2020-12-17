@@ -26,10 +26,11 @@ height: 200px;
 margin: 0 auto;
 `;
 
-export const InputId = styled.input`
+export const Input = styled.input`
 display: block;
 width: 300px;
 height: 50px;
+margin-bottom: 10px;
 border: none;
 border-radius: 5px;
 outline: none;
@@ -37,30 +38,7 @@ text-align: center;
 font-size: ${font__size__medium}
 `;
 
-export const InputPw = styled.input`
-display: block;
-width: 300px;
-height: 50px;
-margin: 20px 0;
-border: none;
-border-radius: 5px;
-outline: none;
-text-align: center;
-font-size: ${font__size__medium}
-`;
-
-export const LoginBtn = styled.button`
-width: 300px;
-height: 30px;
-margin: 20px 0;
-border: none;
-border-radius: 5px;
-outline: none;
-font-weight: bold;
-display: block;
-`;
-
-export const SignUp = styled.button`
+export const Submit = styled.button`
 width: 300px;
 height: 30px;
 margin: 20px 0;

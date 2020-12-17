@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Layout from './Layout';
 import Question from './components/question';
 import Result from './components/result';
 import Login from './components/login';
+import SignUp from './components/signUp';
 
 function App() {
   return (
@@ -13,6 +13,9 @@ function App() {
         </Route>
         <Route path='/result'>
           <Result />
+        </Route>
+        <Route path='/signUp'>
+          <SignUp />
         </Route>
         <Route exact path='/'>
           <Login />

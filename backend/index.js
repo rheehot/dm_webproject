@@ -2,7 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mysql = require('mysql');
-const { Router } = require('express');
 
 const app = express();
 const connection = mysql.createConnection({
@@ -23,29 +22,11 @@ app.get('/', (req, res) => {
     res.send('home');
 });
 
-app.get('/sql', (req, res) => {
-    const sql = 'select * from user where id = ? and pw = ?';
-    const query = ['jaehw', 'jaehwan0917'];
-    console.log(query);
-    connection.query(sql, query, (err, rows, fileds) => {
-        console.log('rows ::', rows);
-        if (err) throw err;
-        else {
-            const sql = 'select id from user where id = ?';
-            const query = ['jaehwan'];
-            connection.query(sql, query, (err, rows) => {
-                if (err) res.status(500).send({ error: 'id err' });
-                else res.send(rows);
-            });
-        }
-    });
-});
-
 app.post('/login', (req, res) => {
     const sql = 'select * from user where id = ? and pw = ?';
     const query = [req.body.id, req.body.pw];
     connection.query(sql, query, (err, rows) => {
-        console.log(rows)
+        console.log(rows.id)
         if (err) throw err;
         else if (rows.length === 0) res.status(403).end();
         else res.send(true);
@@ -56,6 +37,35 @@ app.get('/logout', (req, res) => {
     res.send(false);
 });
 
+app.post('/signUp', (req, res) => {
+    const sql = 'insert into user(id, pw) values(?,?)';
+    const query = [req.body.id, req.body.pw];
+    console.log(query)
+    connection.query(sql, query, (err, rows) => {
+        if (err) throw err;
+        else if (rows.length === 0) res.status(403).end();
+        else res.send(true);
+    });
+});
+
+app.post('/question', (req, res) => {
+    let sqlWhere = new String();
+    if(req.body.q1 === true) sqlWhere += `frontend = ${req.body.q1} and `
+    if(req.body.q2 === true) sqlWhere += `backend = ${req.body.q2} and `
+    if(req.body.q3 === true) sqlWhere += `javascript = ${req.body.q3} and `
+    if(req.body.q4 === true) sqlWhere += `java = ${req.body.q4} and `
+    if(req.body.q5 === true) sqlWhere += `senior = ${req.body.q5} and `
+
+    const sql = `select dev_name, link from developer where ${sqlWhere.slice(0, sqlWhere.length-4)}`;
+    connection.query(sql, (err, rows) => {
+        if(err) throw err;
+        else if(rows.length === 0) res.status(403).end();
+        else {
+            res.json(rows);
+        }
+    })
+});
+
 app.listen(5000, () => {
-    console.log('hello world!!');
+    console.log('dm_webproject, server listen 5000');
 });

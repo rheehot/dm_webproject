@@ -2,12 +2,14 @@ import styled from 'styled-components';
 import {
     color__white,
     color__black,
-    font__size__big,
     font__size__large,
-    font__size__medium
+    font__size__medium,
+    font__size__big,
 } from './styledCommon';
 
 export const Home = styled.div`
+height: 100vh;
+// margin-top: 200px;
 opacity: 0.8;
 color: ${color__white};
 text-align: center;
@@ -64,4 +66,9 @@ padding: 10px 0;
     width: 100%;
     margin: 5px 0;
 }
+`;
+
+export const Title = styled.div`
+font-size: ${font__size__big};
+padding: 30px;
 `;

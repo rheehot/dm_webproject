@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Home, Title, InputId, InputPw, LoginBtn, LoginForm } from './styled/styledLogin';
+import { Home, Title, InputId, InputPw, LoginBtn, LoginForm, SignUp } from './styled/styledLogin';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { loginAction } from '../redux/login';
+import { loginAction } from '../redux/members';
 
-import { useHistory } from 'react-router-dom';
-import Layout from '../Layout';
+import { useHistory, Link } from 'react-router-dom';
 
 const Login = () => {
     const [login, setLogin] = useState({ id: null, pw: null });
@@ -18,7 +17,7 @@ const Login = () => {
     }
 
     const history = useHistory();
-    const loginStatus = useSelector(state => state.login.isLogin);
+    const loginStatus = useSelector(state => state.members.isLogin);
     useEffect(() => {
         loginStatus === true ? history.push('/question') : console.log('');
     }, [loginStatus]);
@@ -30,6 +29,7 @@ const Login = () => {
                 <InputId placeholder="ID" onChange={onChangeId} />
                 <InputPw placeholder="PW" type="password" onChange={onChangePw} />
                 <LoginBtn onClick={onClickLogin}>로그인</LoginBtn>
+                <SignUp><Link to="/signUp">회원가입</Link></SignUp>
             </LoginForm>
         </Home>
     )

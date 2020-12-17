@@ -22,3 +22,18 @@ export const logoutApi = async () => {
     }).then(res => res);
     return res;
 }
+
+export const signUpApi = async (id, pw) => {
+    const res = await axios({
+        method: 'post',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        url: 'http://localhost:5000/signUp',
+        data: {
+            "id": id,
+            "pw": pw,
+        }
+    });
+    return res;
+}

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Home, Title, Questions, ButtonGroup, Button } from './styled/styleQuestion';
 import { useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { questionAction } from '../redux/question';
 
 import Layout from '../Layout';
 
@@ -10,16 +11,22 @@ const Question = () => {
     const [count, setCount] = useState(0);
     let history = useHistory();
 
-    const loginState = useSelector(state => state.login.isLogin);
+    const loginState = useSelector(state => state.members.isLogin);
 
     const onClickBtn = (e) => {
         setCount(count + 1);
-        setState([...state, e.target.dataset.type]);
+        setState([...state, e.target.dataset.type === 'yes' ? true : false]);
     }
 
-    const onClickBtn2 = () => {
-        history.push('/result');
-    }
+    const dispatch = useDispatch();
+    useEffect(() => {
+        count !== 0 && dispatch(questionAction(state));
+    }, [count < 5]);
+
+    const resultLoading = useSelector(state => state.question.loading);
+    useEffect(() => {
+        resultLoading === true && history.push('/result');
+    }, [resultLoading]);
 
     return (
         loginState === true ?
@@ -31,7 +38,6 @@ const Question = () => {
                 <ButtonGroup>
                     <Button onClick={onClickBtn} data-type="yes">Yes</Button>
                     <Button onClick={onClickBtn} data-type="no">No</Button>
-                    <Button onClick={onClickBtn2} data-type="no">aaa</Button>
                 </ButtonGroup>
             </Home>
             :
@@ -50,24 +56,24 @@ export default Question;
 const dummy = {
     data: [
         {
-            title: '1',
-            desc: 'first',
+            title: '질문 1 :: 개발자 선택',
+            desc: '프론트앤드 개발자를 찾으시나요?',
         },
         {
-            title: '2',
-            desc: 'second',
+            title: '질문 2 :: 개발자 선택',
+            desc: '백엔드 개발자를 찾으시나요?',
         },
         {
-            title: '3',
-            desc: 'third',
+            title: '질문 3 :: 사용언어',
+            desc: 'HTML/CSS/JavaScript가 필수 인가요?',
         },
         {
-            title: '4',
-            desc: 'four',
+            title: '질문 4 :: 사용언어',
+            desc: 'JAVA가 필수 인가요?',
         },
         {
-            title: '5',
-            desc: 'five',
+            title: '질문 5 :: 경력',
+            desc: '시니어 개발자를 원하시나요?',
         }
     ]
 }

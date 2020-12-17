@@ -2,12 +2,13 @@ import React from 'react';
 import sytled from 'styled-components';
 
 import { useDispatch } from 'react-redux';
-import { logoutAction } from './redux/login';
+import { logoutAction } from './redux/members';
 
 const Layout = () => {
     const dispatch = useDispatch();
     const onClickLogout = () => {
         dispatch(logoutAction());
+        console.log('click logout')
     }
 
     return (

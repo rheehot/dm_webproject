@@ -1,4 +1,4 @@
-import { loginApi, logoutApi } from '../api/login';
+import { loginApi, logoutApi, signUpApi } from '../api/membersApi';
 
 export const USER_LOGIN = 'USER_LOGIN';
 export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS';
@@ -8,6 +8,9 @@ export const USER_LOGOUT = 'USER_LOGOUT';
 export const USER_LOGOUT_SUCCESS = 'USER_LOGOUT_SUCCESS';
 export const USER_LOGOUT_ERROR = 'USER_LOGOUT_ERROR';
 
+export const USER_SIGNUP = 'USER_SIGNUP';
+export const USER_SIGNUP_SUCCESS = 'USER_SIGNUP_SUCCESS';
+export const USER_SIGNUP_ERROR = 'USER_SIGNUP_ERROR';
 
 
 export const loginAction = (id, pw) => async dispatch => {
@@ -32,9 +35,21 @@ export const logoutAction = () => async dispatch => {
     }
 }
 
+export const signUpAction = (id, pw) => async dispatch => {
+    const payload = await signUpApi(id, pw);
+    console.log('signUp payload :: ', payload);
+    dispatch({type: USER_SIGNUP});
+    try {
+        dispatch({type: USER_SIGNUP_SUCCESS, payload});
+    } catch (error) {
+        dispatch({type: USER_SIGNUP_ERROR, e: error});
+    }
+}
+
 const initalState = {
     loading: false,
     isLogin: false,
+    signUpStatus : false,
 }
 
 const reducer = (state = initalState, action) => {
@@ -47,6 +62,7 @@ const reducer = (state = initalState, action) => {
         case USER_LOGIN_SUCCESS:
             return {
                 ...state,
+                loading: true,
                 isLogin: action.payload.data,
             }
         case USER_LOGIN_ERROR:
@@ -57,7 +73,6 @@ const reducer = (state = initalState, action) => {
             }
 
 
-
         case USER_LOGOUT:
             return {
                 ...state,
@@ -66,13 +81,32 @@ const reducer = (state = initalState, action) => {
         case USER_LOGOUT_SUCCESS:
             return {
                 ...state,
-                loading: false,
+                loading: true,
                 isLogin: action.payload.data,
             }
         case USER_LOGOUT_ERROR: 
             return {
                 ...state,
                 loading: false,
+            }
+
+
+        case USER_SIGNUP:
+            return {
+                ...state,
+                loading: true,
+            }
+        case USER_SIGNUP_SUCCESS:
+            return {
+                ...state,
+                loading: true,
+                signUpStatus: true,
+            }
+        case USER_SIGNUP_ERROR:
+            return {
+                ...state,
+                loading: false,
+                signUpStatus: false,
             }
         default: return state;
     }
