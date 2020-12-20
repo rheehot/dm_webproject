@@ -21,6 +21,7 @@ const Result = () => {
                         developersList[0].map(data => (
                             <Li>
                                 <Info>{data.dev_name}</Info>
+                                <Info>{data.email}</Info>
                                 <a href={data.link}>
                                     <Info> Github :: Blog </Info>
                                 </a>

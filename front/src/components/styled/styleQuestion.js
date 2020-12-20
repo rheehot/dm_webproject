@@ -8,7 +8,6 @@ import {
 
 export const Home = styled.div`
 height: 100vh;
-// margin-top: 200px;
 opacity: 0.8;
 color: ${color__white};
 text-align: center;
@@ -20,12 +19,21 @@ flex-direction: column;
 
 export const Title = styled.div`
 font-size: ${font__size__big};
+font-weight: bold;
 padding: 30px;
+
+@media screen and (max-width: 768px) {
+    font-size: ${font__size__large}
+}
 `;
 
 export const Questions = styled.div`
 font-size: ${font__size__large};
 padding: 0 0 15px 0;
+
+@media screen and (max-width: 768px) {
+    font-size: ${font__size__medium}
+}
 `;
 
 export const ButtonGroup = styled.div`

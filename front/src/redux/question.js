@@ -21,6 +21,7 @@ const initalState = {
     developers: [
         {
             dev_name: null,
+            email: null,
             link: null,
         }
     ]
@@ -46,6 +47,7 @@ const reducer = (state = initalState, action) => {
                 loading: false,
                 developers: [{
                     dev_name: null,
+                    email: null,
                     link: null,
                 }]
             }

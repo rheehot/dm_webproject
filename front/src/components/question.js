@@ -56,23 +56,23 @@ export default Question;
 const dummy = {
     data: [
         {
-            title: '질문 1 :: 개발자 선택',
+            title: 'Q1 :: 개발자 선택',
             desc: '프론트앤드 개발자를 찾으시나요?',
         },
         {
-            title: '질문 2 :: 개발자 선택',
+            title: 'Q2 :: 개발자 선택',
             desc: '백엔드 개발자를 찾으시나요?',
         },
         {
-            title: '질문 3 :: 사용언어',
+            title: 'Q3 :: 사용언어',
             desc: 'HTML/CSS/JavaScript가 필수 인가요?',
         },
         {
-            title: '질문 4 :: 사용언어',
+            title: 'Q4 :: 사용언어',
             desc: 'JAVA가 필수 인가요?',
         },
         {
-            title: '질문 5 :: 경력',
+            title: 'Q5 :: 경력',
             desc: '시니어 개발자를 원하시나요?',
         }
     ]

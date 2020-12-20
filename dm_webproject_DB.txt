@@ -28,7 +28,7 @@ insert into developer values('이동욱', 1, 1, 1, 1, 1, "https://jojoldu.github
 insert into developer values('Tony', 1, 1, 1, 1, 1, "https://github.com/tonyfromundefined");
 insert into developer values('조현영', 1, 1, 1, 1, 1, "https://www.zerocho.com/");
 
-
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password'
 
 
 
