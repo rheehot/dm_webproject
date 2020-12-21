@@ -19,7 +19,7 @@ const Login = () => {
     const history = useHistory();
     const loginStatus = useSelector(state => state.members.isLogin);
     useEffect(() => {
-        loginStatus === true ? history.push('/question') : console.log('');
+        loginStatus === true && history.push('/question');
     }, [loginStatus]);
 
     return (

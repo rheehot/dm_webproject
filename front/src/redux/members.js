@@ -15,7 +15,6 @@ export const USER_SIGNUP_ERROR = 'USER_SIGNUP_ERROR';
 
 export const loginAction = (id, pw) => async dispatch => {
     const payload = await loginApi(id, pw);
-    console.log('payload ::: ', payload);
     dispatch({ type: USER_LOGIN });
     try {
         dispatch({ type: USER_LOGIN_SUCCESS, payload });
@@ -26,7 +25,6 @@ export const loginAction = (id, pw) => async dispatch => {
 
 export const logoutAction = () => async dispatch => {
     const payload = await logoutApi();
-    console.log('payload ::: ', payload);
     dispatch({ type: USER_LOGOUT });
     try {
         dispatch({ type: USER_LOGOUT_SUCCESS, payload });
@@ -37,7 +35,6 @@ export const logoutAction = () => async dispatch => {
 
 export const signUpAction = (id, pw) => async dispatch => {
     const payload = await signUpApi(id, pw);
-    console.log('signUp payload :: ', payload);
     dispatch({type: USER_SIGNUP});
     try {
         dispatch({type: USER_SIGNUP_SUCCESS, payload});

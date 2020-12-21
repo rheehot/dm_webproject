@@ -1,4 +1,4 @@
-create database dm_webproject;
+-- create database dm_webproject;
 use dm_webproject;
 
 -- 사용자 리스트 테이블
@@ -9,6 +9,7 @@ create table user(
 );
 
 insert into user (id, pw) values ('jaepani', 'jaepani5015');
+insert into user (id, pw) values ('test', '123');
 
 -- 개발자 리스트 테이블
 create table developer (
@@ -18,17 +19,17 @@ create table developer (
 	javascript BOOLEAN not null,
 	java BOOLEAN not null,
 	senior BOOLEAN not null,
+    email varchar(30) not null,
 	link varchar(50) not null
 );
 
-insert into developer values('김재환', 1, 1, 1, 0, 0, "https://jaepani.github.io/portfolio/");
-insert into developer values('박정환', 1, 1, 1, 1, 0, "https://github.com/OriginalKimChi");
-insert into developer values('Captain Pangyo', 1, 1, 1, 1, 1, "https://github.com/joshua1988");
-insert into developer values('이동욱', 1, 1, 1, 1, 1, "https://jojoldu.github.io/");
-insert into developer values('Tony', 1, 1, 1, 1, 1, "https://github.com/tonyfromundefined");
-insert into developer values('조현영', 1, 1, 1, 1, 1, "https://www.zerocho.com/");
+insert into developer values('김재환', 1, 1, 1, 0, 0, "jaepani5015@gmail.com", "https://jaepani.github.io/portfolio/");
+insert into developer values('박정환', 1, 1, 1, 1, 0, "pjhyl1127@gmail.com", "https://github.com/OriginalKimChi");
+insert into developer values('Captain Pangyo', 1, 1, 1, 1, 1, "joshua1988@gmail.com", "https://github.com/joshua1988");
+insert into developer values('이동욱', 1, 1, 1, 1, 1, "jojoldu@gmail.com", "https://jojoldu.github.io/");
+insert into developer values('Tony', 1, 1, 1, 1, 1, "tony.w@hey.com", "https://github.com/tonyfromundefined");
+insert into developer values('조현영', 1, 1, 1, 1, 1, "zerohch0@gmail.com", "https://www.zerocho.com/"); 
+insert into developer values('Stark Jeon', 1, 1, 1, 0, 0, "a01058406602@gmail.com", "https://github.com/Jeontaeyun"); 
 
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password'
-
-
-
+select * from user;
+select * from developer;

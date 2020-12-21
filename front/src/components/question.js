@@ -9,9 +9,7 @@ import Layout from '../Layout';
 const Question = () => {
     const [state, setState] = useState([]);
     const [count, setCount] = useState(0);
-    let history = useHistory();
-
-    const loginState = useSelector(state => state.members.isLogin);
+    const history = useHistory();
 
     const onClickBtn = (e) => {
         setCount(count + 1);
@@ -20,7 +18,9 @@ const Question = () => {
 
     const dispatch = useDispatch();
     useEffect(() => {
-        count !== 0 && dispatch(questionAction(state));
+        setTimeout(() => {
+            count !== 0 && dispatch(questionAction(state));
+        }, 1500);
     }, [count < 5]);
 
     const resultLoading = useSelector(state => state.question.loading);
@@ -29,7 +29,6 @@ const Question = () => {
     }, [resultLoading]);
 
     return (
-        loginState === true ?
         count < 5 ?
             <Home>
                 <Layout />
@@ -43,10 +42,6 @@ const Question = () => {
             :
             <Home>
                 <Title>. . . 분석중</Title>
-            </Home>
-            :
-            <Home>
-                <Title>로그인이 필요한 서비스 입니다.</Title>
             </Home>
     );
 }

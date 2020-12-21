@@ -4,6 +4,8 @@ const SELECT_QUESTION = 'SELECT_QUESTION';
 const SELECT_QUESTION_SUCCESS = 'SELECT_QUESTION_SUCCESS';
 const SELECT_QUESTION_ERROR = 'SELECT_QUESTION_ERROR';
 
+const RESET = 'RESET';
+
 export const questionAction = (state) => async dispatch => {
     const payload = await questionApi(state);
     console.log(payload);
@@ -16,6 +18,7 @@ export const questionAction = (state) => async dispatch => {
     }
 }
 
+export const resetQuestion = () => ({ type: RESET });
 const initalState = {
     loading: false,
     developers: [
@@ -30,16 +33,27 @@ const initalState = {
 const reducer = (state = initalState, action) => {
     switch (action.type) {
 
+        case RESET:
+            return {
+                loading: false,
+                developers: [
+                    {
+                        dev_name: null,
+                        email: null,
+                        link: null,
+                    }
+                ]
+            }
+
         case SELECT_QUESTION:
             return {
                 ...state,
                 loading: true,
             }
         case SELECT_QUESTION_SUCCESS:
-            console.log('!!!!!!', action.payload.data)
             return {
                 ...state,
-                developers:[action.payload.data]
+                developers: [action.payload.data]
             }
         case SELECT_QUESTION_ERROR:
             return {

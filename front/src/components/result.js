@@ -1,18 +1,31 @@
-import React from 'react';
-import { Home, Ul, Li, Info, Container, Title } from './styled/styledResult';
+import React, { useEffect } from 'react';
+import { Home, Ul, Li, Info, Container } from './styled/styledResult';
 
 import Layout from '../Layout';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { resetQuestion } from '../redux/question';
+
+import { useHistory } from 'react-router-dom';
 
 const Result = () => {
     const developersList = useSelector(state => state.question.developers);
     const state = useSelector(state => state.question.loading);
-    const loginState = useSelector(state => state.members.isLogin);
+
+    const dispatch = useDispatch();
+    const onClickBack = () => {
+        dispatch(resetQuestion());
+    }
+
+    const history = useHistory();
+    useEffect(() => {
+        state === false && history.push('/question');
+    }, [state === false]);
+
     return (
-        loginState === true ?
         <Home>
             <Layout />
+            <div onClick={onClickBack}>뒤로가기</div>
             <h1 style={{ marginTop: 30 }}>추천 개발자</h1>
             <Container>
                 <Ul>
@@ -22,7 +35,7 @@ const Result = () => {
                             <Li>
                                 <Info>{data.dev_name}</Info>
                                 <Info>{data.email}</Info>
-                                <a href={data.link}>
+                                <a href={data.link} target='blank'>
                                     <Info> Github :: Blog </Info>
                                 </a>
                             </Li>
@@ -30,10 +43,6 @@ const Result = () => {
                     }
                 </Ul>
             </Container>
-        </Home>
-        :
-        <Home>
-            <Title>로그인이 필요한 서비스 입니다.</Title>
         </Home>
     );
 }
