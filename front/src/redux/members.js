@@ -19,6 +19,7 @@ export const loginAction = (id, pw) => async dispatch => {
     try {
         dispatch({ type: USER_LOGIN_SUCCESS, payload });
     } catch (error) {
+        console.log('error!!!');
         dispatch({ type: USER_LOGIN_ERROR, e: error });
     }
 }

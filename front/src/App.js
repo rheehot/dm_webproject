@@ -4,7 +4,9 @@ import Question from './components/question';
 import Result from './components/result';
 import Login from './components/login';
 import SignUp from './components/signUp';
+import CreateProfile from './components/createProfile';
 import LoginSign from './components/loginSign';
+import Menu from "./components/menu";
 
 import { useSelector } from 'react-redux';
 
@@ -14,9 +16,11 @@ function App() {
     <div style={{ background: 'url(./backImg.jpg) center/cover no-repeat', height: '100vh', opacity: 0.7 }}>
       <Switch>
         <Route exact path='/'>
-          {isLogin === true ? <Redirect to='/question' /> : <Login />}
+          {isLogin === true ? <Redirect to='/selectMenu' /> : <Login />}
         </Route>
+        {isLogin === true ? <Route path='/selectMenu' component={Menu} /> : <LoginSign />}
         {isLogin === true ? <Route path='/signUp' component={SignUp} /> : <LoginSign />}
+        {isLogin === true ? <Route path='/createProfile' component={CreateProfile} /> : <LoginSign />}
         {isLogin === true ? <Route path='/question' component={Question} /> : <LoginSign />}
         {isLogin === true ? <Route path='/result' component={Result} /> : <LoginSign />}
       </Switch>
