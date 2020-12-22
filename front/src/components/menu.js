@@ -2,10 +2,12 @@ import React from 'react';
 import { Home, Title, Select } from './styled/styledMenu';
 
 import { Link } from 'react-router-dom';
+import Layout from '../Layout';
 
 const Menu = () => {
     return (
         <Home>
+            <Layout />
             <Title>:: Hello World ::</Title>
             <Select>
                 <Link to='/question' style={{

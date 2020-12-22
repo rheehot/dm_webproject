@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Home, Title, Input, Submit, Wrap, SubTitle } from './styled/styledCreateProfile';
+import { Home, Title, Input, Submit, Wrap, SubTitle, AllWrap } from './styled/styledCreateProfile';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { profileAction } from '../redux/profile';
@@ -31,7 +31,7 @@ const CreateProfile = () => {
     return (
         <Home>
             <Title>개발자 프로필 등록</Title>
-            <div style={{ margin: "0 auto" }}>
+            <AllWrap style={{ margin: "0 auto" }}>
                 <Input onChange={onChangeName} placeholder="이름 | 닉네임" />
                 <Input onChange={onChangeEmail} placeholder="이메일" type='email' />
                 <Input onChange={onChangeLink} placeholder="GitHub | Blog" />
@@ -74,7 +74,7 @@ const CreateProfile = () => {
                 </Wrap>
 
                 <Submit onClick={onClickSubmit}>등록하기</Submit>
-            </div>
+            </AllWrap>
         </Home>
     );
 }

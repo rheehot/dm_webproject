@@ -1,4 +1,3 @@
-// import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Redirect, Route, Switch } from "react-router";
 import Question from './components/question';
 import Result from './components/result';
