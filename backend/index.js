@@ -23,6 +23,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/login', (req, res) => {
+    console.log('app.post /login');
     const sql = 'select * from user where id = ? and pw = ?';
     const query = [req.body.id, req.body.pw];
     connection.query(sql, query, (err, rows) => {
@@ -43,6 +44,19 @@ app.post('/signUp', (req, res) => {
     console.log(query)
     connection.query(sql, query, (err, rows) => {
         if (err) throw err;
+        else if (rows.length === 0) res.status(403).end();
+        else res.send(true);
+    });
+});
+
+app.post('/profile', (req, res) => {
+    const sql = 'insert into developer \
+    (dev_name, frontend, backend, javascript, java, senior, email, link) \
+    value(?,?,?,?,?,?,?,?)';
+    const query = [req.body.name, req.body.frontend, req.body.backend, req.body.javascript, req.body.java, req.body.senior, req.body.email, req.body.link];
+    connection.query(sql, query, (err, rows) => {
+        console.log(`rows :: ${rows}`);
+        if(err) throw err;
         else if (rows.length === 0) res.status(403).end();
         else res.send(true);
     });

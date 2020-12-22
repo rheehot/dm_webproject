@@ -14,7 +14,7 @@ export const questionAction = (state) => async dispatch => {
     try {
         dispatch({ type: SELECT_QUESTION_SUCCESS, payload });
     } catch (error) {
-        dispatch({ type: SELECT_QUESTION_SUCCESS, e: error });
+        dispatch({ type: SELECT_QUESTION_ERROR, e: error });
     }
 }
 

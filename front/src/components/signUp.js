@@ -28,7 +28,8 @@ const SignUp = () => {
     const history = useHistory();
     const isSignUp = useSelector(state => state.members.signUpStatus);
     useEffect(() => {
-        isSignUp === true ? history.push('/') : console.log('');
+        isSignUp === true && history.push('/');
+        isSignUp === true && alert('회원가입 성공');
     }, [isSignUp]);
 
     return (

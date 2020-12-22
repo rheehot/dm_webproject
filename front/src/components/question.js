@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { questionAction } from '../redux/question';
 
 import Layout from '../Layout';
+import BackMenu from './backMenu';
 
 const Question = () => {
     const [state, setState] = useState([]);
@@ -32,6 +33,7 @@ const Question = () => {
         count < 5 ?
             <Home>
                 <Layout />
+                <BackMenu />
                 <Title>{dummy.data[count].title}</Title>
                 <Questions>{dummy.data[count].desc}</Questions>
                 <ButtonGroup>

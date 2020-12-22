@@ -18,8 +18,8 @@ function App() {
         <Route exact path='/'>
           {isLogin === true ? <Redirect to='/selectMenu' /> : <Login />}
         </Route>
+        <Route path='/signUp' component={SignUp} />
         {isLogin === true ? <Route path='/selectMenu' component={Menu} /> : <LoginSign />}
-        {isLogin === true ? <Route path='/signUp' component={SignUp} /> : <LoginSign />}
         {isLogin === true ? <Route path='/createProfile' component={CreateProfile} /> : <LoginSign />}
         {isLogin === true ? <Route path='/question' component={Question} /> : <LoginSign />}
         {isLogin === true ? <Route path='/result' component={Result} /> : <LoginSign />}

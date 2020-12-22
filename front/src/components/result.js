@@ -2,20 +2,14 @@ import React, { useEffect } from 'react';
 import { Home, Ul, Li, Info, Container } from './styled/styledResult';
 
 import Layout from '../Layout';
+import BackMenu from './backMenu';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { resetQuestion } from '../redux/question';
-
+import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 const Result = () => {
     const developersList = useSelector(state => state.question.developers);
     const state = useSelector(state => state.question.loading);
-
-    const dispatch = useDispatch();
-    const onClickBack = () => {
-        dispatch(resetQuestion());
-    }
 
     const history = useHistory();
     useEffect(() => {
@@ -25,7 +19,7 @@ const Result = () => {
     return (
         <Home>
             <Layout />
-            <div onClick={onClickBack}>뒤로가기</div>
+            <BackMenu />
             <h1 style={{ marginTop: 30 }}>추천 개발자</h1>
             <Container>
                 <Ul>
