@@ -1,3 +1,9 @@
+{/*
+    로그인 컴포넌트이다.
+    
+    회원가입을 하기 위한 링크로 이동할 수도 있다.
+*/}
+
 import React, { useState, useEffect } from 'react';
 import { Home, Title, InputId, InputPw, LoginBtn, LoginForm, SignUp } from './styled/styledLogin';
 
@@ -29,7 +35,7 @@ const Login = () => {
                 <InputId placeholder="ID" onChange={onChangeId} />
                 <InputPw placeholder="PW" type="password" onChange={onChangePw} />
                 <LoginBtn onClick={onClickLogin}>로그인</LoginBtn>
-                <SignUp><Link to="/signUp">회원가입</Link></SignUp>
+                <SignUp><Link to="/signUp">회원가입</Link></SignUp> {/* 회원가입을 위한 링크 */}
             </LoginForm>
         </Home>
     )

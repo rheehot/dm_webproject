@@ -70,7 +70,7 @@ const dummy = {
         },
         {
             title: 'Q5 :: 경력',
-            desc: '시니어 개발자를 원하시나요?',
+            desc: ' ',
         }
     ]
 }

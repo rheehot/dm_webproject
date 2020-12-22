@@ -4,14 +4,11 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import configureStore from './redux/configureStore';
-import { PersistGate } from 'redux-persist/integration/react'
 
 import { createGlobalStyle } from 'styled-components';
 
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-
-// const { store, persistor } = configureStore();
 
 const GlobalStyle = createGlobalStyle`
 body {
@@ -26,12 +23,9 @@ a {
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      {/* <Provider store={store}> */}
-      <Provider store={configureStore}>
-        {/* <PersistGate loading={null} persistor={persistor}> */}
+    <BrowserRouter> {/* ReactRouter의 기능 */}
+      <Provider store={configureStore}> {/* Redux의 상태관리 기능으로 데이터들을 App 하위 컴포넌트에서 접근 할 수 있도록 해준다. */}
           <App />
-        {/* </PersistGate> */}
         <GlobalStyle />
       </Provider>
     </BrowserRouter>
