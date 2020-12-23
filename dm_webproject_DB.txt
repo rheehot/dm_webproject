@@ -33,3 +33,5 @@ insert into developer values('Stark Jeon', 1, 1, 1, 0, 0, "a01058406602@gmail.co
 
 select * from user;
 select * from developer;
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
